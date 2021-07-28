@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  platform: {
+    path: 'gld',
+    web_http_port: 7010,
+    web_https_port: 7011,
+  }
 };
 
 /*

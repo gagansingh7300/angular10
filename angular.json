@@ -15,8 +15,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
+            "plugin": "~core/scripts/hooks/plugin.js",
             "outputPath": "dist/IEIssueDebug",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,7 +31,100 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "bundleName": "polyfill-webcomp-es5",
+                "input": "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"
+              },
+              {
+                "bundleName": "polyfill-webcomp",
+                "input": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js"
+              },
+              "node_modules/rxjs/bundles/rxjs.umd.js",
+              "node_modules/@angular/core/bundles/core.umd.js",
+              "node_modules/@angular/common/bundles/common.umd.js",
+              "node_modules/@angular/common/bundles/common-http.umd.js",
+              "node_modules/@angular/compiler/bundles/compiler.umd.js",
+              "node_modules/@angular/elements/bundles/elements.umd.js",
+              "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+              "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+              "node_modules/@angular/forms/bundles/forms.umd.js",
+              "node_modules/@angular/animations/bundles/animations.umd.js",
+              "node_modules/@angular/animations/bundles/animations-browser.umd.js",
+              "node_modules/@angular/router/bundles/router.umd.js",
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-platform.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-bidi.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-collections.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-coercion.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-observers.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-keycodes.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-a11y.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-text-field.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-collections.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-portal.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-accordion.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-scrolling.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-table.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-overlay.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-layout.umd.js"
+              },
+              {
+                "bundleName": "angular-material",
+                "input": "node_modules/@angular/material/bundles/material.umd.js"
+              },
+              {
+                "bundleName": "digital-core",
+                "input": "core/dist/core/bundles/digital-core.umd.js"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -64,9 +158,11 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "IEIssueDebug:build"
+            "browserTarget": "IEIssueDebug:build",
+            "port": 7000,
+            "proxyConfig": "src/proxy.config.js"
           },
           "configurations": {
             "production": {
@@ -81,7 +177,7 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
@@ -123,6 +219,262 @@
           }
         }
       }
-    }},
+    },
+    "DigitalPlatform": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "Digital/ClientApp",
+      "sourceRoot": "Digital/ClientApp/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "plugin": "~core/scripts/hooks/plugin.js",
+            "outputPath": "Digital/WebApp/wwwroot/dist",
+            "index": "Digital/ClientApp/src/index.html",
+            "main": "Digital/ClientApp/src/main.ts",
+            "polyfills": "Digital/ClientApp/src/polyfills.ts",
+            "tsConfig": "Digital/ClientApp/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "Digital/ClientApp/src/favicon.ico",
+              "Digital/ClientApp/src/assets"
+            ],
+            "styles": [
+              "Digital/ClientApp/src/styles.scss"
+            ],
+            "scripts": [
+              {
+                "bundleName": "polyfill-webcomp-es5",
+                "input": "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"
+              },
+              {
+                "bundleName": "polyfill-webcomp",
+                "input": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js"
+              },
+              "node_modules/rxjs/bundles/rxjs.umd.js",
+              "node_modules/@angular/core/bundles/core.umd.js",
+              "node_modules/@angular/common/bundles/common.umd.js",
+              "node_modules/@angular/common/bundles/common-http.umd.js",
+              "node_modules/@angular/compiler/bundles/compiler.umd.js",
+              "node_modules/@angular/elements/bundles/elements.umd.js",
+              "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+              "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+              "node_modules/@angular/forms/bundles/forms.umd.js",
+              "node_modules/@angular/animations/bundles/animations.umd.js",
+              "node_modules/@angular/animations/bundles/animations-browser.umd.js",
+              "node_modules/@angular/router/bundles/router.umd.js",
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-platform.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-bidi.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-collections.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-coercion.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-observers.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-keycodes.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-a11y.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-text-field.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-collections.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-portal.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-accordion.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-scrolling.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-table.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-overlay.umd.js"
+              },
+              {
+                "bundleName": "angular-cdk",
+                "input": "node_modules/@angular/cdk/bundles/cdk-layout.umd.js"
+              },
+              {
+                "bundleName": "angular-material",
+                "input": "node_modules/@angular/material/bundles/material.umd.js"
+              },
+              {
+                "bundleName": "digital-core",
+                "input": "core/dist/core/bundles/digital-core.umd.js"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "Digital/ClientApp/src/environments/environment.ts",
+                  "with": "Digital/ClientApp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "DigitalPlatform:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "DigitalPlatform:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "DigitalPlatform:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "Digital/ClientApp/src/test.ts",
+            "polyfills": "Digital/ClientApp/src/polyfills.ts",
+            "tsConfig": "Digital/ClientApp/tsconfig.spec.json",
+            "karmaConfig": "Digital/ClientApp/karma.conf.js",
+            "assets": [
+              "Digital/ClientApp/src/favicon.ico",
+              "Digital/ClientApp/src/assets"
+            ],
+            "styles": [
+              "Digital/ClientApp/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "Digital/ClientApp/tsconfig.app.json",
+              "Digital/ClientApp/tsconfig.spec.json",
+              "Digital/ClientApp/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "Digital/ClientApp/e2e/protractor.conf.js",
+            "devServerTarget": "DigitalPlatform:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "DigitalPlatform:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "core": {
+      "projectType": "library",
+      "root": "core",
+      "sourceRoot": "core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "core/tsconfig.lib.json",
+            "project": "core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "core/src/test.ts",
+            "tsConfig": "core/tsconfig.spec.json",
+            "karmaConfig": "core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "core/tsconfig.lib.json",
+              "core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "defaultProject": "IEIssueDebug"
 }

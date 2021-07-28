@@ -1,0 +1,35 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:55300",
+      "sslPort": 44380
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "SAPDEV",
+        "AzureConfigEndpoint": "Endpoint=https://platfom-appconfig.azconfig.io;Id=rwh9-l0-s0:5zoFf9ceDWWUToPRhUC7;Secret=PHAGucr450fdr2UqQzmTMw8jJivs8pKYE4eowiRq/2w=",
+        "AZURE_CLIENT_ID": "72606499-b645-4454-8e8d-cbe80f9874d9",
+        "AZURE_CLIENT_SECRET": "0IHMS-rb6C2fd7a4_G~hDZQltUz4.~-d0G",
+        "AZURE_TENANT_ID": "d52c9ea1-7c21-47b1-82a3-33a74b1f74b8"
+      }
+    },
+    "WebApp": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "https://gld.ups.com:7011;http://localhost:7010",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "SAPDEV",
+        "AzureConfigEndpoint": "Endpoint=https://platfom-appconfig.azconfig.io;Id=rwh9-l0-s0:5zoFf9ceDWWUToPRhUC7;Secret=PHAGucr450fdr2UqQzmTMw8jJivs8pKYE4eowiRq/2w=",
+        "AZURE_CLIENT_ID": "72606499-b645-4454-8e8d-cbe80f9874d9",
+        "AZURE_CLIENT_SECRET": "0IHMS-rb6C2fd7a4_G~hDZQltUz4.~-d0G",
+        "AZURE_TENANT_ID": "d52c9ea1-7c21-47b1-82a3-33a74b1f74b8"
+      }
+    }
+  }
+}
