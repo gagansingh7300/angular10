@@ -29,6 +29,8 @@ module.exports = {
         '@angular/cdk/textField': 'ng.cdk.textField',
 
         '@angular/material': 'ng.material',
+        '@angular/material/core': 'ng.material.core',
+        '@angular/material/table': 'ng.material.table',
         // Uncomment and add to scripts in angular.json if needed
         "@angular/router": "ng.router",
         '@digital/core': 'digital.core'

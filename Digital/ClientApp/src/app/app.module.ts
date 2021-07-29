@@ -4,6 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, NgModule } from '@angula
 import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
+import { CoreModule } from '@digital/core';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { createCustomElement } from '@angular/elements';
   ],
   imports: [
     BrowserModule,
+    CoreModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
