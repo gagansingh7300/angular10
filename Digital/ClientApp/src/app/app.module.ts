@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CoreModule } from '@digital/core';
 import { APP_BASE_HREF } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
 
@@ -12,7 +11,6 @@ import { createCustomElement } from '@angular/elements';
   ],
   imports: [
     BrowserModule,
-    CoreModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

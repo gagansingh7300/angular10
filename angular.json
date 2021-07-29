@@ -161,7 +161,7 @@
           "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "IEIssueDebug:build",
-            "port": 7000,
+            "port": 5000,
             "proxyConfig": "src/proxy.config.js"
           },
           "configurations": {

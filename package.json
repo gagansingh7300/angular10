@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --extra-webpack-config webpack.externals.js --project IEIssueDebug --single-bundle --ssl=true",
-    "digital:platform:start": "ng serve DigitalPlatform --extra-webpack-config webpack.externals.js --ssl=true",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -13,7 +11,10 @@
     "postinstall": "ngcc",
     "build:externals": "ng build --extra-webpack-config webpack.externals.js --prod --single-bundle",
     "build:IEIssueDebug:externals": "ng build --extra-webpack-config webpack.externals.js --prod --project IEIssueDebug --single-bundle",
-    "DigitalPlatform:build": "ng build --extra-webpack-config webpack.externals.js --project DigitalPlatform --single-bundle"
+    "DigitalPlatform:build": "ng build --extra-webpack-config webpack.externals.js --project DigitalPlatform --single-bundle",
+    "digital:platform:start": "ng serve DigitalPlatform --extra-webpack-config webpack.externals.js --ssl=true",
+    "base:start": "ng serve --extra-webpack-config webpack.externals.js --project IEIssueDebug --single-bundle --ssl=true"
+
   },
   "private": true,
   "dependencies": {
